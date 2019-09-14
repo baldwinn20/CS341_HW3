@@ -1,0 +1,126 @@
+<!--Nicholas Baldwin-->
+<!--September 9,2019-->
+
+<!--https://learn.jquery.com/using-jquery-core/faq/how-do-i-get-the-text-value-of-a-selected-option/-->
+<!--https://www.w3schools.com/howto/howto_css_dropdown.asp-->
+
+<!DOCTYPE html>
+<html>
+   <head>
+      <script
+         src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"/></script>
+      <script>
+         $(document).ready(function(){
+         $("button").click(function(){
+
+         //creates dialog when the "order" button has been clicke
+         var thankyou = $("<p></p>").text("Thank you! Your order has been placed.");
+         var detailsHead = $("<p></p>").text("Order details:");
+         //Reads the textArea input
+         var specialText = $.trim($("#noteArea").val());
+         //Records which radio button is checked
+         var checkedButton = $("input[name='flavor']:checked").val();
+         //Records the number selected in the dropdown box
+         var numCakes = $( "#numCheesecakes option:selected" ).text();
+         //displays values from checkedButton and numCakes
+         var orderMessage = $("<p></p>").text("You ordered " + numCakes + " " +checkedButton + " cheesecakes.");
+
+         // Show alert if the textArea contains keyword "vegan"
+         if(specialText.indexOf("vegan") != -1){
+         alert("Warning! Cheesecake contains dairy!");
+         }
+
+         //removes the form section and button
+         $("#orderTable").remove();
+         $("#noteHead").remove();
+         $("#noteArea").remove();
+         $("#orderButton").remove();
+
+         //displays order details specified in the vars above
+         $("body").append(thankyou, detailsHead, orderMessage);
+         });
+         });
+
+      </script>
+   </head>
+   <body>
+      <link rel="stylesheet" href="C:\Users\ndbal\Documents\GitHub\CS341_HW3\hw3\public\stylesheets\baldwinn20.css" />
+      <style>
+         p
+         {
+         margin:0;
+         }
+      </style>
+      <!--Create heading and add cheesecake image-->
+      <h1>Cheesecake Order Form</h1>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Mondays_at_Il_Forno_-_Cheesecake_with_strawberry_sauce.jpg" height="150" width="150">
+      <!--Table for order quantity and topping-->
+      <table id="orderTable" style="width:15%" table class="center">
+         <tr>
+            <td>Quantity</td>
+            <td>Topping</td>
+         </tr>
+         <tr>
+            <td></td>
+            <td>
+               <input type="radio" name="flavor" value="plain">Plain<br>
+            </td>
+         </tr>
+         <tr>
+            <td>
+               <select id="numCheesecakes">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+               </select>
+            </td>
+            <td>
+               <input type="radio" name="flavor" value="cherry">Cherry<br>
+            </td>
+         </tr>
+         <tr>
+            <td></td>
+            <td>
+               <input type="radio" name="flavor" value="chocolate">Chocolate<br>
+            </td>
+         </tr>
+      </table>
+      <!--Space for special instructions-->
+      <p id="noteHead">Notes:</p>
+      <textarea id="noteArea" rows="4" cols="50" placeholder="Enter any special instructions here.">
+	  </textarea>
+      <br>
+      <div align = "center">
+         <button id="orderButton">Order</button>
+      </div>
+
+	<!--Puts h3 and the hover dropdown in the same divider-->
+	 <div align="center">
+      <!--List of orders last month-->
+      <h3>Total orders for </h3>
+	   <div class="dropdown">
+         <button id="monthHover" class="dropbtn">Jan</button>
+         <div class="dropdown-content">
+            <a>Jan</a>
+            <a>Feb</a>
+            <a>Mar</a>
+			<a>Apr</a>
+			<a>May</a>
+			<a>Jun</a>
+			<a>Jul</a>
+			<a>Aug</a>
+			<a>Sept</a>
+			<a>Oct</a>
+			<a>Nov</a>
+			<a>Dec</a>
+         </div>
+      </div>
+      <ul>
+         <li>11 cherry</li>
+         <li>17 chocolate</li>
+         <li>31 plain</li>
+      </ul>
+   </body>
+</html>
