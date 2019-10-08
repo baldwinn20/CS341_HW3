@@ -1,6 +1,9 @@
+//Nicholas Baldwin
+//30 September 2019
+
 clickHandler = function( event ) {
   /*do stuff*/
-  //creates dialog when the "order" button has been clicke
+  //creates dialog when the "order" button has been clicked
          var thankyou = $("<p></p>").text("Thank you! Your order has been placed.");
          var detailsHead = $("<p></p>").text("Order details:");
          //Reads the textArea input
